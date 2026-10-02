@@ -1,21 +1,440 @@
-MIT License
+import 'package:flutter/material.dart';
 
-Copyright (c) 2026 nelmar11
+class CircuitCanvas extends StatelessWidget {
+  const CircuitCanvas({super.key});
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: Colors.grey.shade200),
+          ),
+          child: CustomPaint(
+            painter: CircuitBoardPainter(),
+            child: Padding(
+              padding: const EdgeInsets.all(18),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: constraints.maxWidth * 0.18,
+                    top: constraints.maxHeight * 0.2,
+                    child: _ComponentChip(label: 'Battery', color: Colors.orange),
+                  ),
+                  Positioned(
+                    left: constraints.maxWidth * 0.52,
+                    top: constraints.maxHeight * 0.38,
+                    child: _ComponentChip(label: 'LED', color: Colors.yellow),
+                  ),
+                  Positioned(
+                    left: constraints.maxWidth * 0.18,
+                    top: constraints.maxHeight * 0.62,
+                    child: _ComponentChip(label: 'Resistor', color: Colors.purple),
+                  ),
+                  Positioned(
+                    left: constraints.maxWidth * 0.6,
+                    top: constraints.maxHeight * 0.66,
+                    child: _ComponentChip(label: 'MCU', color: Colors.blue),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+class CircuitBoardPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.grey.shade200
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke;
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+    final gridPaint = Paint()
+      ..color = Colors.grey.shade100
+      ..strokeWidth = 1;
+
+    for (double x = 0; x < size.width; x += 20) {
+      canvas.drawLine(Offset(x, 0), Offset(x, size.height), gridPaint);
+    }
+
+    for (double y = 0; y < size.height; y += 20) {
+      canvas.drawLine(Offset(0, y), Offset(size.width, y), gridPaint);
+    }
+
+    canvas.drawLine(
+      Offset(size.width * 0.2, size.height * 0.2),
+      Offset(size.width * 0.5, size.height * 0.2),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(size.width * 0.5, size.height * 0.2),
+      Offset(size.width * 0.5, size.height * 0.38),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(size.width * 0.5, size.height * 0.38),
+      Offset(size.width * 0.66, size.height * 0.38),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(size.width * 0.18, size.height * 0.62),
+      Offset(size.width * 0.6, size.height * 0.62),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(size.width * 0.6, size.height * 0.62),
+      Offset(size.width * 0.6, size.height * 0.66),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(size.width * 0.5, size.height * 0.66),
+      Offset(size.width * 0.6, size.height * 0.66),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+class _ComponentChip extends StatelessWidget {
+  const _ComponentChip({required this.label, required this.color});
+
+  final String label;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.15),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: color.withOpacity(0.35)),
+      ),
+      child: Text(
+        label,
+        style: const TextStyle(
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n
+
+
+
+
+
+
+
+n
+
+
+
+
+
+
+
+
