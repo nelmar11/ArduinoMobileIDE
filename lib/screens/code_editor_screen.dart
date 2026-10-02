@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/circuit_canvas.dart';
+import '../widgets/interactive_circuit_board.dart';
 
 class CircuitWorkspaceScreen extends StatelessWidget {
   const CircuitWorkspaceScreen({super.key});
@@ -21,9 +21,16 @@ class CircuitWorkspaceScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(18),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.04),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
                 ),
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Icon(Icons.wifi_tethering_rounded, color: Colors.green),
                     SizedBox(width: 8),
                     Expanded(child: Text('Simulation ready')),
@@ -33,7 +40,7 @@ class CircuitWorkspaceScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               const Expanded(
-                child: CircuitCanvas(),
+                child: InteractiveCircuitBoard(),
               ),
             ],
           ),

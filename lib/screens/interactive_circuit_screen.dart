@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
 class InteractiveCircuitBoard extends StatefulWidget {
@@ -10,11 +8,11 @@ class InteractiveCircuitBoard extends StatefulWidget {
 }
 
 class _InteractiveCircuitBoardState extends State<InteractiveCircuitBoard> {
-  final List<CircuitNode> _nodes = [
-    const CircuitNode(id: 'power', x: 80, y: 110, label: 'Power'),
-    const CircuitNode(id: 'led', x: 260, y: 170, label: 'LED'),
-    const CircuitNode(id: 'resistor', x: 120, y: 300, label: 'Resistor'),
-    const CircuitNode(id: 'mcu', x: 380, y: 260, label: 'MCU'),
+  final List<CircuitNode> _nodes = const [
+    CircuitNode(id: 'power', x: 80, y: 110, label: 'Power'),
+    CircuitNode(id: 'led', x: 260, y: 170, label: 'LED'),
+    CircuitNode(id: 'resistor', x: 120, y: 300, label: 'Resistor'),
+    CircuitNode(id: 'mcu', x: 380, y: 260, label: 'MCU'),
   ];
 
   @override
@@ -144,7 +142,6 @@ class CircuitConnectionPainter extends CustomPainter {
     for (int i = 0; i < points.length - 1; i++) {
       final start = points[i];
       final end = points[i + 1];
-
       final mid = Offset((start.dx + end.dx) / 2, start.dy);
       final path = Path()
         ..moveTo(start.dx, start.dy)
@@ -182,3 +179,180 @@ class CircuitNode {
   final double y;
   final String label;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a
