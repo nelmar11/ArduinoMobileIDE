@@ -1,76 +1,81 @@
-class ElectronicComponent {
-  const ElectronicComponent({
-    required this.name,
-    required this.category,
-    required this.description,
-    required this.icon,
-  });
+import 'package:flutter/material.dart';
 
-  final String name;
-  final String category;
-  final String description;
-  final String icon;
+import '../data/electronic_components.dart';
+
+class ComponentLibrary extends StatelessWidget {
+  const ComponentLibrary({super.key, required this.components});
+
+  final List components;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 12,
+      runSpacing: 12,
+      children: components
+          .map(
+            (component) => SizedBox(
+              width: 165,
+              child: Container(
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(18),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.04),
+                      blurRadius: 10,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      component.symbol,
+                      style: const TextStyle(fontSize: 26),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      component.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade50,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        component.categoryLabel,
+                        style: TextStyle(
+                          color: Colors.blue.shade700,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      component.description,
+                      style: TextStyle(
+                        color: Colors.grey.shade700,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
+          .toList(),
+    );
+  }
 }
-
-const sampleComponents = [
-  ElectronicComponent(
-    name: 'Battery',
-    category: 'Source',
-    description: 'Power source for prototypes',
-    icon: '🔋',
-  ),
-  ElectronicComponent(
-    name: 'Resistor',
-    category: 'Linear',
-    description: 'Limits current in a circuit',
-    icon: '🧩',
-  ),
-  ElectronicComponent(
-    name: 'LED',
-    category: 'Diode',
-    description: 'Light emitting diode',
-    icon: '💡',
-  ),
-  ElectronicComponent(
-    name: 'NPN Transistor',
-    category: 'Transistor',
-    description: 'Amplifies or switches signals',
-    icon: '📡',
-  ),
-  ElectronicComponent(
-    name: 'Push Button',
-    category: 'Switch',
-    description: 'Momentary input switch',
-    icon: '🔘',
-  ),
-  ElectronicComponent(
-    name: 'Op-Amp',
-    category: 'Integrated Circuit',
-    description: 'Signal conditioning block',
-    icon: '⚙️',
-  ),
-  ElectronicComponent(
-    name: 'Capacitor',
-    category: 'Linear',
-    description: 'Stores charge and filters signals',
-    icon: '🧱',
-  ),
-  ElectronicComponent(
-    name: 'MOSFET',
-    category: 'Transistor',
-    description: 'Power switching device',
-    icon: '🔌',
-  ),
-  ElectronicComponent(
-    name: 'Ground',
-    category: 'Source',
-    description: 'Reference return path',
-    icon: '⏚',
-  ),
-  ElectronicComponent(
-    name: '555 Timer',
-    category: 'Integrated Circuit',
-    description: 'Timing and pulse generation',
-    icon: '⏱️',
-  ),
-];

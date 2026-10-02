@@ -1,45 +1,74 @@
-import 'package:flutter/material.dart';
+import '../models/electronic_component.dart';
 
-class CodeEditorScreen extends StatelessWidget {
-  const CodeEditorScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sketch Editor'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.play_arrow_rounded),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Container(
-            decoration: BoxDecoration(
-              color: const Color(0xFF0F172A),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(16),
-              child: SingleChildScrollView(
-                child: Text(
-                  'void setup() {\n  pinMode(LED_BUILTIN, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(LED_BUILTIN, HIGH);\n  delay(500);\n  digitalWrite(LED_BUILTIN, LOW);\n  delay(500);\n}\n',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontFamily: 'monospace',
-                    height: 1.7,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+const sampleComponents = <ElectronicComponent>[
+  ElectronicComponent(
+    id: 'battery',
+    name: 'Battery',
+    category: ElectronicPartCategory.source,
+    symbol: '🔋',
+    description: 'Power source for electronics prototypes.',
+  ),
+  ElectronicComponent(
+    id: 'resistor',
+    name: 'Resistor',
+    category: ElectronicPartCategory.linear,
+    symbol: '🧩',
+    description: 'Limits current flow in a circuit.',
+  ),
+  ElectronicComponent(
+    id: 'led',
+    name: 'LED',
+    category: ElectronicPartCategory.diode,
+    symbol: '💡',
+    description: 'Signals output or status in a circuit.',
+  ),
+  ElectronicComponent(
+    id: 'npn',
+    name: 'NPN Transistor',
+    category: ElectronicPartCategory.transistor,
+    symbol: '📡',
+    description: 'Switches or amplifies current flow.',
+  ),
+  ElectronicComponent(
+    id: 'pushbutton',
+    name: 'Push Button',
+    category: ElectronicPartCategory.switchPart,
+    symbol: '🔘',
+    description: 'Momentary user input switch.',
+  ),
+  ElectronicComponent(
+    id: 'opamp',
+    name: 'Op-Amp',
+    category: ElectronicPartCategory.integratedCircuit,
+    symbol: '⚙️',
+    description: 'Amplifies and conditions signals.',
+  ),
+  ElectronicComponent(
+    id: 'capacitor',
+    name: 'Capacitor',
+    category: ElectronicPartCategory.linear,
+    symbol: '🧱',
+    description: 'Stores charge and smooths signals.',
+  ),
+  ElectronicComponent(
+    id: 'mosfet',
+    name: 'MOSFET',
+    category: ElectronicPartCategory.transistor,
+    symbol: '🔌',
+    description: 'High-efficiency electronic switch.',
+  ),
+  ElectronicComponent(
+    id: 'ground',
+    name: 'Ground',
+    category: ElectronicPartCategory.source,
+    symbol: '⏚',
+    description: 'Reference return for the circuit.',
+  ),
+  ElectronicComponent(
+    id: 'timer555',
+    name: '555 Timer',
+    category: ElectronicPartCategory.integratedCircuit,
+    symbol: '⏱️',
+    description: 'Timing oscillator and pulse generator.',
+  ),
+];
